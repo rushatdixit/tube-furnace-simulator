@@ -58,6 +58,24 @@ The simulation script will automatically construct any missing subdirectories in
 - **`data/xdmf-s/`**: The complete 3D simulation results capable of being opened natively in applications like **ParaView**.
 - **`data/meshes/`**: The compiled Gmsh tetrahedron files.
 
+## 📊 Simulation Outputs
+
+### 1. 3D Mesh Generation (Gmsh)
+*The tetrahedral mesh topology showing the quartz tube, heating element zone, and multi-layer insulation plugs.*
+![Gmsh CAD Mesh](data/meshes/tube-furnace-mesh.png)
+
+### 2. 3D Volumetric Thermal Field (ParaView)
+*The raw XDMF/HDF5 solution exported from FEniCSx, visualized using an interactive clipping plane in ParaView.*
+![ParaView 3D Render](data/visuals/paraview-render.png)
+
+### 3. Longitudinal Cross-Section (Matplotlib)
+*A high-resolution 2D slice along the Z-axis (YZ Plane) showing heat radiating out of the exposed quartz tips.*
+![Matplotlib Lengthwise Slice](data/graphs/furnace_lengthwise_slice.png)
+
+### 4. Perpendicular Cross-Section (Matplotlib)
+*A slice looking straight down the barrel (XY Plane), demonstrating the asymmetric "hot top" buoyancy gradient pooling against the upper steel casing.*
+![Matplotlib Barrel Slice](data/graphs/furnace_barrel_slice.png)
+
 ---
 
 ## Exploring with ParaView
