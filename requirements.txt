@@ -1,0 +1,7 @@
+fenics-dolfinx
+meshio
+gmsh
+python-gmsh
+numpy
+matplotlib
+mpi4py
