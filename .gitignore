@@ -7,3 +7,5 @@ data/meshes/*.msh
 data/xdmf-s/*.h5
 data/xdmf-s/*.xdmf
 data/xdmf-s/*.h5.xdmf
+
+.png
