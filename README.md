@@ -70,11 +70,11 @@ The simulation script will automatically construct any missing subdirectories in
 
 ### 3. Longitudinal Cross-Section (Matplotlib)
 *A high-resolution 2D slice along the Z-axis (YZ Plane) showing heat radiating out of the exposed quartz tips.*
-![Matplotlib Lengthwise Slice](data/graphs/furnace_lengthwise_slice.png)
+![Matplotlib Lengthwise Slice](data/visuals/furnace_lengthwise_slice.png)
 
 ### 4. Perpendicular Cross-Section (Matplotlib)
 *A slice looking straight down the barrel (XY Plane), demonstrating the asymmetric "hot top" buoyancy gradient pooling against the upper steel casing.*
-![Matplotlib Barrel Slice](data/graphs/furnace_barrel_slice.png)
+![Matplotlib Barrel Slice](data/visuals/furnace_barrel_slice.png)
 
 ---
 
