@@ -8,4 +8,5 @@ data/xdmf-s/*.h5
 data/xdmf-s/*.xdmf
 data/xdmf-s/*.h5.xdmf
 
-*.png
+data/graphs/*.png
+data/visuals/*.png
