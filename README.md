@@ -2,6 +2,15 @@
 
 A Finite Element Analysis (FEA) based thermal simulation of an electric heating furnace. This project models the spatial buoyancy gradients, heat conduction, and convective heat transfer of a tubular furnace apparatus. Built on FEniCSx and Gmsh.
 
+## Project Overview
+
+This repository is dedicated to a modular, Finite Element Analysis (FEA) based thermal simulation of an electric heating tubular furnace. The project mathematically models:
+- **Spatial Buoyancy Gradients**: Accurate convective heat transfer considering atmospheric environments bounding the steel casing.
+- **Solid Heat Conduction**: Heat dissipation modeling through layered physical materials like alumina cement, ceramic fiber boards, and the central quartz heating tube.
+- **Volumetric Heat Generation**: Simulation of a central 1500W heating element applying steady-state thermal loads.
+
+Using advanced parametric modeling via **Gmsh**, the codebase constructs the comprehensive 3D tetrahedral geometry of the furnace. It then bridges this geometry into pristine XDMF matrices to act as the primary domain for **FEniCSx**, a highly-parallelized matrix solver, which solves the partial differential equations across the mesh. It achieves this while retaining a clean, automated Python pipeline for execution and visualization.
+
 ## Prerequisites
 
 To run this project, we rely on advanced FEA scientific computing libraries which are best installed via `conda-forge`. FEniCSx and Gmsh have complex C++ bindings that Conda handles automatically.
