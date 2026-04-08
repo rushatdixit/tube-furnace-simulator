@@ -10,11 +10,9 @@ To run this project, we rely on advanced FEA scientific computing libraries whic
 If you don't already have Conda installed, you can quickly install `Miniforge` (a lightweight Conda installer prioritizing `conda-forge`) entirely from your terminal:
 
 ```bash
-# 1. Download and run the Miniforge installer automatically
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh -b -p $HOME/miniforge3
 
-# 2. Initialize Conda for your shell
 source $HOME/miniforge3/etc/profile.d/conda.sh
 conda init
 ```
@@ -25,7 +23,6 @@ conda init
 1. **Clone/Download the Repository**
 Navigate to the desired location on your machine and ensure you are in the project root:
 ```bash
-# If you downloaded the files, navigate into the directory
 cd /path/to/furnace
 ```
 
