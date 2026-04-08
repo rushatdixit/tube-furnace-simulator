@@ -7,7 +7,3 @@ data/meshes/*.msh
 data/xdmf-s/*.h5
 data/xdmf-s/*.xdmf
 data/xdmf-s/*.h5.xdmf
-
-data/graphs/*.png
-data/visuals/*.png
-data/meshes/*.png
