@@ -21,9 +21,9 @@ conda init
 ## Installation Instructions
 
 1. **Clone/Download the Repository**
-Navigate to the desired location on your machine and ensure you are in the project root:
 ```bash
-cd /path/to/furnace
+git clone [https://github.com/rushatdixit/tube-furnace-simulator.git](https://github.com/rushatdixit/tube-furnace-simulator.git)
+cd tube-furnace-simulator
 ```
 
 2. **Create a Conda Environment**
