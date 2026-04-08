@@ -10,3 +10,4 @@ data/xdmf-s/*.h5.xdmf
 
 data/graphs/*.png
 data/visuals/*.png
+data/meshes/*.png
