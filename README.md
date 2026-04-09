@@ -67,7 +67,7 @@ The simulation script will automatically construct any missing subdirectories in
 - **`data/xdmf-s/`**: The complete 3D simulation results capable of being opened natively in applications like **ParaView**.
 - **`data/meshes/`**: The compiled Gmsh tetrahedron files.
 
-## 📊 Simulation Outputs
+## Simulation Outputs
 
 ### 1. 3D Mesh Generation (Gmsh)
 *The tetrahedral mesh topology showing the quartz tube, heating element zone, and multi-layer insulation plugs.*
