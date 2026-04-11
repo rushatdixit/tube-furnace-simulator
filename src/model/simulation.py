@@ -9,6 +9,7 @@ from dolfinx import io, fem, mesh, default_scalar_type, geometry
 from dolfinx.fem.petsc import LinearProblem
 import ufl
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 import os
 from pathlib import Path
 
@@ -39,6 +40,8 @@ def run_advanced_solver() -> None:
     with io.XDMFFile(MPI.COMM_WORLD, str(mesh_path), "r") as xdmf:
         domain = xdmf.read_mesh(name="Grid")
         cell_tags = xdmf.read_meshtags(domain, name="Grid")
+
+    domain.geometry.x[:, :] /= 1000.0
 
     print("2. Configuring Physics...")
     V = fem.functionspace(domain, ("Lagrange", 1))
@@ -85,19 +88,22 @@ def run_advanced_solver() -> None:
     a += h_box * u * v * ds(1)
     a += h_tube * u * v * ds(2)
 
-    print("6. Applying 15% Maintenance Power (422W)...")
+    print("6. Applying Volumetric Heat Generation to Coiled Coil (Tag 6)...")
     Q = fem.Constant(domain, default_scalar_type(168960.0))
     L = Q * v * dx(6)
     L += h_box * T_amb * v * ds(1)
     L += h_tube * T_amb * v * ds(2)
 
     print("7. Executing Matrix Solver...")
-    problem = LinearProblem(a, L, bcs=[], petsc_options={"ksp_type": "preonly", "pc_type": "lu"}, petsc_options_prefix="furnace_solve_")
+    problem = LinearProblem(a, L, bcs=[], petsc_options={"ksp_type": "cg", "pc_type": "gamg"}, petsc_options_prefix="furnace_solve_")
     T_solution = problem.solve()
     T_solution.name = "Temperature"
 
+    print(f"   -> Max Temp: {T_solution.x.array.max():.1f} °C")
+
+    np.save(dirs["xdmf"] / "T_array.npy", T_solution.x.array)
+
     print("8. Probing Mesh and Generating 2D Annotated Heatmaps...")
-    import matplotlib.patches as patches
     plt.style.use('dark_background')
 
     bb_tree = geometry.bb_tree(domain, domain.topology.dim)
@@ -134,7 +140,7 @@ def run_advanced_solver() -> None:
     ax1.text(260, 45, "Quartz Tube", color='cyan', fontsize=12, fontweight='bold')
     
     ax1.add_patch(patches.Rectangle((-225, -58), 450, 116, linewidth=1.5, edgecolor='lime', facecolor='none', alpha=0.8, linestyle=':'))
-    ax1.text(-70, 70, "1500W Heating Zone", color='lime', fontsize=12, fontweight='bold')
+    ax1.text(-70, 70, "Heating Zone", color='lime', fontsize=12, fontweight='bold')
     
     ax1.set_xlabel("Length along Z-Axis (mm)", fontsize=12)
     ax1.set_ylabel("Height along Y-Axis (mm)", fontsize=12)
@@ -142,6 +148,7 @@ def run_advanced_solver() -> None:
     ax1.set_aspect('equal')
     plt.tight_layout()
     fig1.savefig(str(dirs["visuals"] / "furnace_lengthwise_slice.png"), dpi=300, facecolor='black')
+    plt.close(fig1)
 
     print("   -> Rendering Camera 2: Perpendicular (Barrel) Slice...")
     x_perp = np.linspace(-0.26, 0.26, 250) 
@@ -172,7 +179,7 @@ def run_advanced_solver() -> None:
     ax2.text(-230, 220, "Steel Casing", color='white', fontsize=12, fontweight='bold')
     
     ax2.add_patch(patches.Circle((0, 0), radius=58, linewidth=1.5, edgecolor='lime', facecolor='none', alpha=0.8, linestyle=':'))
-    ax2.text(65, 55, "1500W Heating Zone", color='lime', fontsize=12, fontweight='bold')
+    ax2.text(65, 55, "Heating Zone", color='lime', fontsize=12, fontweight='bold')
     
     ax2.add_patch(patches.Circle((0, 0), radius=35, linewidth=1.5, edgecolor='cyan', facecolor='none', alpha=0.8, linestyle='-'))
     ax2.text(-40, -10, "Quartz Tube", color='cyan', fontsize=12, fontweight='bold')
@@ -183,6 +190,7 @@ def run_advanced_solver() -> None:
     ax2.set_aspect('equal')
     plt.tight_layout()
     fig2.savefig(str(dirs["visuals"] / "furnace_barrel_slice.png"), dpi=300, facecolor='black')
+    plt.close(fig2)
 
     plt.style.use('default')
     print("-> Both cross-sections saved successfully to the 'visuals' folder!")
