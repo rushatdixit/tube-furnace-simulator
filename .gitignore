@@ -5,5 +5,6 @@ __pycache__/
 
 data/meshes/*.msh
 data/xdmf-s/*.h5
+data/xdmf-s/*.npy
 data/xdmf-s/*.xdmf
 data/xdmf-s/*.h5.xdmf

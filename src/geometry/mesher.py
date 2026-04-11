@@ -112,7 +112,7 @@ def run_mesher() -> None:
     gmsh.option.setNumber("Mesh.CharacteristicLengthMax", 0.02)
     gmsh.option.setNumber("Mesh.Algorithm3D", 1) 
     gmsh.model.mesh.generate(3)
-    # gmsh.fltk.run() # Disable GUI for automated pipeline 
+    gmsh.fltk.run() # Disable GUI for automated pipeline 
     gmsh.write("data/meshes/flawless_homogenized_furnace.msh")
     gmsh.finalize()
 
