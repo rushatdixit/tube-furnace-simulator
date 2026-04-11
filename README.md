@@ -64,6 +64,7 @@ python simulate.py
 
 The simulation script will automatically construct any missing subdirectories inside the `data` folder. You can expect:
 - **`data/visuals/`**: High-quality 2D annotated heatmaps of both longitudinal and perpendicular cross-sections.
+- **`data/graphs/`**: Analytical line graphs plotting temperature profiles and thermal drop-offs.
 - **`data/xdmf-s/`**: The complete 3D simulation results capable of being opened natively in applications like **ParaView**.
 - **`data/meshes/`**: The compiled Gmsh tetrahedron files.
 
@@ -84,6 +85,14 @@ The simulation script will automatically construct any missing subdirectories in
 ### 4. Perpendicular Cross-Section (Matplotlib)
 *A slice looking straight down the barrel (XY Plane), demonstrating the asymmetric "hot top" buoyancy gradient pooling against the upper steel casing.*
 ![Matplotlib Barrel Slice](data/visuals/furnace_barrel_slice.png)
+
+### 5. Longitudinal Temperature Profile (Matplotlib)
+*A line graph plotting the centerline temperature along the Z-axis, highlighting the core working volume and thermal dead zones.*
+![Longitudinal Temperature Profile](data/graphs/analysis_longitudinal_profile.png)
+
+### 6. Radial Temperature Drop (Matplotlib)
+*A line graph plotting the radial temperature drop-off from the center core to the outer steel casing, displaying the heat retention efficiency of each material layer.*
+![Radial Temperature Drop](data/graphs/analysis_radial_dropoff.png)
 
 ---
 
