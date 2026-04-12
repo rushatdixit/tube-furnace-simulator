@@ -8,3 +8,4 @@ data/xdmf-s/*.h5
 data/xdmf-s/*.npy
 data/xdmf-s/*.xdmf
 data/xdmf-s/*.h5.xdmf
+Furnace_MultiPhysics_Roadmap.pdf
